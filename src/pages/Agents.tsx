@@ -1,8 +1,7 @@
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import { AgentList } from "@/components/agents/AgentList";
 import { AgentFilters } from "@/components/agents/AgentFilters";
-import { Button } from "@/components/ui/button";
-import { UserPlus } from "lucide-react";
+import { AddAgentDialog } from "@/components/agents/AddAgentDialog";
 
 const Agents = () => {
   return (
@@ -13,10 +12,7 @@ const Agents = () => {
             <h1 className="text-3xl font-bold text-foreground mb-2">Agent Management</h1>
             <p className="text-muted-foreground">Manage your network of agents</p>
           </div>
-          <Button className="bg-gradient-primary">
-            <UserPlus className="h-4 w-4 mr-2" />
-            Add Agent
-          </Button>
+          <AddAgentDialog />
         </div>
         
         <AgentFilters />

@@ -96,43 +96,48 @@ export const KYCForm = () => {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label>Home Photo</Label>
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer">
-                <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleFileChange('homePhoto', e.target.files?.[0] || null)}
-                  className="hidden"
-                  id="homePhoto"
-                />
-                <Label htmlFor="homePhoto" className="cursor-pointer text-sm text-muted-foreground">
-                  {formData.homePhoto ? "Photo selected ✓" : "Click to upload photo"}
-                </Label>
+            <div className="space-y-2 md:col-span-2">
+              <Label>Home Photo with GPS Location</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer">
+                  <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    onChange={(e) => {
+                      handleFileChange('homePhoto', e.target.files?.[0] || null);
+                      captureLocation();
+                    }}
+                    className="hidden"
+                    id="homePhoto"
+                  />
+                  <Label htmlFor="homePhoto" className="cursor-pointer text-sm text-muted-foreground">
+                    {formData.homePhoto ? "Photo captured ✓" : "Take photo with GPS"}
+                  </Label>
+                  <p className="text-xs text-muted-foreground mt-2">GPS will be auto-captured</p>
+                </div>
+                
+                <div className={`border-2 rounded-lg p-6 flex flex-col items-center justify-center ${formData.location ? 'border-green-500 bg-green-50 dark:bg-green-950' : 'border-border'}`}>
+                  {formData.location ? (
+                    <>
+                      <CheckCircle className="h-8 w-8 text-green-600 mb-2" />
+                      <span className="text-sm font-medium text-green-600">GPS Location Captured</span>
+                      <span className="text-xs text-muted-foreground mt-1">
+                        Lat: {(formData.location as any).lat?.toFixed(6)}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        Lng: {(formData.location as any).lng?.toFixed(6)}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <MapPin className="h-8 w-8 text-muted-foreground mb-2" />
+                      <span className="text-sm text-muted-foreground">Waiting for location</span>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label>GPS Location</Label>
-              <Button
-                type="button"
-                onClick={captureLocation}
-                variant="outline"
-                className="w-full h-full min-h-[120px] flex flex-col gap-2"
-              >
-                {formData.location ? (
-                  <>
-                    <CheckCircle className="h-8 w-8 text-green-600" />
-                    <span className="text-sm">Location Captured</span>
-                  </>
-                ) : (
-                  <>
-                    <MapPin className="h-8 w-8" />
-                    <span className="text-sm">Capture Home Location</span>
-                  </>
-                )}
-              </Button>
             </div>
           </div>
 
