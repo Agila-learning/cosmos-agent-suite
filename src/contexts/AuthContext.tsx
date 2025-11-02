@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useNotifications } from './NotificationContext';
 
 export interface User {
   id: string;
@@ -79,6 +80,7 @@ const mockUsers: Record<string, { password: string; user: User }> = {
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
+  const { addNotification } = useNotifications();
 
   useEffect(() => {
     // Check for stored session
@@ -94,6 +96,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (userCredentials && userCredentials.password === password) {
       setUser(userCredentials.user);
       localStorage.setItem('forgeUser', JSON.stringify(userCredentials.user));
+      
+      addNotification({
+        title: "Login Successful",
+        message: `Welcome back, ${userCredentials.user.name}!`,
+        type: "success"
+      });
+
       return true;
     }
     return false;

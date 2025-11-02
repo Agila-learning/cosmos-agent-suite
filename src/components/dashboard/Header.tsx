@@ -1,10 +1,19 @@
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { Search, LogOut, Settings as SettingsIcon, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/contexts/AuthContext";
 import { NotificationsDropdown } from "@/components/notifications/NotificationsDropdown";
+import { useNavigate } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Command,
   CommandEmpty,
@@ -23,7 +32,8 @@ const mockSearchData = [
 ];
 
 export const Header = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -96,20 +106,46 @@ export const Header = () => {
       <div className="flex items-center gap-4">
         <NotificationsDropdown />
 
-        <div className="flex items-center gap-3">
-          <div className="text-right">
-            <p className="text-sm font-medium">{user?.name}</p>
-            <Badge variant="outline" className={`${getLevelBadge(user?.role || 'silver')} border-0 text-white text-xs`}>
-              {user?.role} Agent
-            </Badge>
-          </div>
-          <Avatar>
-            <AvatarImage src="" />
-            <AvatarFallback className="bg-gradient-primary text-white">
-              {user ? getInitials(user.name) : 'U'}
-            </AvatarFallback>
-          </Avatar>
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="flex items-center gap-3 cursor-pointer hover-scale">
+              <div className="text-right hidden sm:block">
+                <p className="text-sm font-medium">{user?.name}</p>
+                <Badge variant="outline" className={`${getLevelBadge(user?.role || 'silver')} border-0 text-white text-xs`}>
+                  {user?.role} Agent
+                </Badge>
+              </div>
+              <Avatar>
+                <AvatarImage src="" />
+                <AvatarFallback className="bg-gradient-primary text-white">
+                  {user ? getInitials(user.name) : 'U'}
+                </AvatarFallback>
+              </Avatar>
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56 bg-card">
+            <DropdownMenuLabel>
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">{user?.name}</p>
+                <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => navigate('/settings')} className="cursor-pointer">
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigate('/settings')} className="cursor-pointer">
+              <SettingsIcon className="mr-2 h-4 w-4" />
+              <span>Settings</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={logout} className="cursor-pointer text-destructive">
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Logout</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );

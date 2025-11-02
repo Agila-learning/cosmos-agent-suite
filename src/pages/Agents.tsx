@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import { AgentList } from "@/components/agents/AgentList";
 import { AgentFilters } from "@/components/agents/AgentFilters";
 import { AddAgentDialog } from "@/components/agents/AddAgentDialog";
+import { AgentTreeView } from "@/components/agents/AgentTreeView";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Agents = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [levelFilter, setLevelFilter] = useState('all');
+  const [locationFilter, setLocationFilter] = useState('all');
+
   return (
     <DashboardLayout>
       <div className="space-y-6 animate-fade-in">
@@ -15,8 +22,29 @@ const Agents = () => {
           <AddAgentDialog />
         </div>
         
-        <AgentFilters />
-        <AgentList />
+        <Tabs defaultValue="grid" className="w-full">
+          <TabsList>
+            <TabsTrigger value="grid">Grid View</TabsTrigger>
+            <TabsTrigger value="tree">Tree View</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="grid" className="space-y-6">
+            <AgentFilters 
+              onSearchChange={setSearchQuery}
+              onLevelChange={setLevelFilter}
+              onLocationChange={setLocationFilter}
+            />
+            <AgentList 
+              searchQuery={searchQuery}
+              levelFilter={levelFilter}
+              locationFilter={locationFilter}
+            />
+          </TabsContent>
+          
+          <TabsContent value="tree">
+            <AgentTreeView />
+          </TabsContent>
+        </Tabs>
       </div>
     </DashboardLayout>
   );

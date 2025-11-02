@@ -13,19 +13,29 @@ const Dashboard = () => {
     <DashboardLayout>
       <div className="space-y-6 animate-fade-in">
         {/* Welcome Section */}
-        <Card className="bg-gradient-primary text-white border-0 shadow-glow">
-          <CardContent className="p-6">
-            <h1 className="text-3xl font-bold mb-2">
-              Welcome to Forge India Connect
-            </h1>
-            <p className="text-white/90 text-lg mb-4">
-              Multi-Agent Management Application
-            </p>
-            <p className="text-white/80">
-              Empowering your agent network with cutting-edge tools for growth, collaboration, and success. 
-              Manage your team, track performance, and scale your business effortlessly. Your journey to 
-              excellence starts here with Forge India's comprehensive agent management platform.
-            </p>
+        <Card className="bg-gradient-primary text-white border-0 shadow-glow overflow-hidden relative">
+          <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+          <CardContent className="p-8 relative z-10">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold mb-3 animate-fade-in">
+                  Welcome to Forge India Connect
+                </h1>
+                <p className="text-white/90 text-xl mb-4 font-semibold">
+                  Multi-Agent Management Application
+                </p>
+                <p className="text-white/80 max-w-3xl leading-relaxed">
+                  Empowering your agent network with cutting-edge tools for growth, collaboration, and success. 
+                  Manage your team, track performance, and scale your business effortlessly. Your journey to 
+                  excellence starts here with Forge India's comprehensive agent management platform.
+                </p>
+              </div>
+              <img 
+                src="/src/assets/forge-logo.jpeg" 
+                alt="Forge India" 
+                className="h-20 w-20 object-contain rounded-lg shadow-lg hidden md:block"
+              />
+            </div>
           </CardContent>
         </Card>
         

@@ -5,18 +5,32 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Send } from "lucide-react";
 
-const messages = [
+import { useAuth } from "@/contexts/AuthContext";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+const initialMessages = [
   { id: 1, sender: "Priya Sharma", message: "Welcome to the team!", time: "10:30 AM", isOwn: false },
   { id: 2, sender: "You", message: "Thank you! Excited to be here.", time: "10:32 AM", isOwn: true },
   { id: 3, sender: "Amit Patel", message: "Don't forget to complete your KYC", time: "11:15 AM", isOwn: false },
 ];
 
 export const TeamChat = () => {
+  const { user } = useAuth();
+  const [messages, setMessages] = useState(initialMessages);
   const [newMessage, setNewMessage] = useState("");
 
   const handleSend = () => {
     if (newMessage.trim()) {
-      // Handle send logic
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      
+      setMessages(prev => [...prev, {
+        id: Date.now(),
+        sender: user?.name || "You",
+        message: newMessage,
+        time: timeString,
+        isOwn: true
+      }]);
       setNewMessage("");
     }
   };
@@ -28,7 +42,7 @@ export const TeamChat = () => {
         <p className="text-sm text-muted-foreground">Connected with your network</p>
       </div>
 
-      <div className="flex-1 overflow-auto p-4 space-y-4">
+      <ScrollArea className="flex-1 p-4 space-y-4 h-[500px]">
         {messages.map((msg) => (
           <div key={msg.id} className={`flex gap-3 ${msg.isOwn ? 'flex-row-reverse' : ''}`}>
             <Avatar className="h-10 w-10">
@@ -45,7 +59,7 @@ export const TeamChat = () => {
             </div>
           </div>
         ))}
-      </div>
+      </ScrollArea>
 
       <div className="p-4 border-t">
         <div className="flex gap-2">

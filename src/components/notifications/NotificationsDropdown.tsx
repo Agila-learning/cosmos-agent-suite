@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Bell, CheckCheck, X } from 'lucide-react';
+import { useNotifications } from '@/contexts/NotificationContext';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -19,58 +19,9 @@ interface Notification {
   type: 'info' | 'success' | 'warning';
 }
 
-const mockNotifications: Notification[] = [
-  {
-    id: '1',
-    title: 'New Agent Joined',
-    message: 'Sneha Reddy has joined your network',
-    time: '2 hours ago',
-    read: false,
-    type: 'success'
-  },
-  {
-    id: '2',
-    title: 'KYC Approved',
-    message: 'Your KYC verification has been approved',
-    time: '5 hours ago',
-    read: false,
-    type: 'success'
-  },
-  {
-    id: '3',
-    title: 'Team Update',
-    message: 'Amit Patel upgraded to Gold level',
-    time: '1 day ago',
-    read: true,
-    type: 'info'
-  },
-  {
-    id: '4',
-    title: 'Document Pending',
-    message: 'Please complete your resume upload',
-    time: '2 days ago',
-    read: true,
-    type: 'warning'
-  }
-];
-
 export const NotificationsDropdown = () => {
-  const [notifications, setNotifications] = useState(mockNotifications);
+  const { notifications, markAsRead, markAllAsRead, removeNotification } = useNotifications();
   const unreadCount = notifications.filter(n => !n.read).length;
-
-  const markAsRead = (id: string) => {
-    setNotifications(prev =>
-      prev.map(n => n.id === id ? { ...n, read: true } : n)
-    );
-  };
-
-  const markAllAsRead = () => {
-    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
-  };
-
-  const removeNotification = (id: string) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
-  };
 
   return (
     <DropdownMenu>

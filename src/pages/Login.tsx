@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -117,6 +117,17 @@ const Login = () => {
                 <p>Gold: gold@forge.com / gold123</p>
                 <p>Silver: silver@forge.com / silver123</p>
               </div>
+            </div>
+
+            <div className="mt-4 text-center text-sm">
+              <span className="text-muted-foreground">Don't have an account? </span>
+              <Button
+                variant="link"
+                className="p-0 h-auto text-primary font-medium"
+                onClick={() => navigate('/register')}
+              >
+                Sign up
+              </Button>
             </div>
           </CardContent>
         </Card>
