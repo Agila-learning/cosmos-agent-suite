@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/contexts/AuthContext";
 import { NotificationsDropdown } from "@/components/notifications/NotificationsDropdown";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
@@ -104,6 +105,7 @@ export const Header = () => {
       </div>
 
       <div className="flex items-center gap-4">
+        <ThemeToggle />
         <NotificationsDropdown />
 
         <DropdownMenu>

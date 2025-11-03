@@ -49,21 +49,26 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <Card className="shadow-glow border-primary/20 animate-fade-in">
-          <CardHeader className="space-y-4 text-center">
-            <div className="flex justify-center mb-4">
-              <img src={forgeLogo} alt="Forge India" className="h-20 w-auto rounded-lg shadow-card" />
+    <div className="min-h-screen grid lg:grid-cols-2">
+      <div className="hidden lg:flex flex-col justify-center items-center bg-gradient-primary text-white p-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="relative z-10 space-y-8 text-center">
+          <img src={forgeLogo} alt="Forge India" className="h-32 w-32 object-contain mx-auto rounded-2xl shadow-2xl animate-pulse-glow" />
+          <div>
+            <h1 className="text-5xl font-bold mb-4">Forge India Connect</h1>
+            <p className="text-xl text-white/90 mb-4">Multi-Agent Management Platform</p>
+            <p className="text-white/80 max-w-md mx-auto">Empowering agents with cutting-edge tools for growth and success.</p>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center justify-center p-8 bg-background">
+        <Card className="w-full max-w-md shadow-card">
+          <CardHeader className="space-y-1 text-center">
+            <div className="flex justify-center mb-4 lg:hidden">
+              <img src={forgeLogo} alt="Forge India" className="h-16 w-16 object-contain rounded-lg" />
             </div>
-            <CardTitle className="text-3xl font-bold">
-              <span className="text-transparent bg-clip-text bg-gradient-primary">
-                Forge India Connect
-              </span>
-            </CardTitle>
-            <CardDescription className="text-base">
-              Multi-Agent Management Platform
-            </CardDescription>
+            <CardTitle className="text-3xl font-bold">Welcome Back</CardTitle>
+            <CardDescription>Sign in to continue</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
