@@ -1,6 +1,8 @@
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import { ResumeUpload } from "@/components/resume/ResumeUpload";
 import { JobApplications } from "@/components/resume/JobApplications";
+import { JobListings } from "@/components/resume/JobListings";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Resume = () => {
   return (
@@ -8,13 +10,25 @@ const Resume = () => {
       <div className="space-y-6 animate-fade-in">
         <div>
           <h1 className="text-3xl font-bold text-foreground mb-2">Resume & Jobs</h1>
-          <p className="text-muted-foreground">Upload your resume and track job applications</p>
+          <p className="text-muted-foreground">Manage your resume, find jobs, and track applications</p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <ResumeUpload />
-          <JobApplications />
-        </div>
+        <Tabs defaultValue="jobs" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 max-w-md">
+            <TabsTrigger value="jobs">Available Jobs</TabsTrigger>
+            <TabsTrigger value="applications">My Applications</TabsTrigger>
+            <TabsTrigger value="resume">My Resume</TabsTrigger>
+          </TabsList>
+          <TabsContent value="jobs" className="space-y-6 mt-6">
+            <JobListings />
+          </TabsContent>
+          <TabsContent value="applications" className="space-y-6 mt-6">
+            <JobApplications />
+          </TabsContent>
+          <TabsContent value="resume" className="space-y-6 mt-6">
+            <ResumeUpload />
+          </TabsContent>
+        </Tabs>
       </div>
     </DashboardLayout>
   );

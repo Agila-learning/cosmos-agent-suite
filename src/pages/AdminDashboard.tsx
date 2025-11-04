@@ -42,8 +42,8 @@ const AdminDashboard = () => {
         <StatsCards />
         
         {/* Admin Overview Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="hover-scale cursor-pointer border-2 border-transparent hover:border-primary transition-all">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card className="hover-scale cursor-pointer border-2 border-transparent hover:border-primary transition-all shadow-card">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-gradient-primary rounded-lg">

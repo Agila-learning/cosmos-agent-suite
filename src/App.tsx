@@ -17,6 +17,8 @@ import Agents from "./pages/Agents";
 import Chat from "./pages/Chat";
 import Resume from "./pages/Resume";
 import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
+import AdminAgentsManagement from "./pages/AdminAgentsManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +43,8 @@ const App = () => (
               <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
               <Route path="/resume" element={<ProtectedRoute><Resume /></ProtectedRoute>} />
               <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="/admin/agents" element={<ProtectedRoute><AdminAgentsManagement /></ProtectedRoute>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

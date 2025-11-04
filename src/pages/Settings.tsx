@@ -30,27 +30,23 @@ const Settings = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Profile Information</CardTitle>
-              <CardDescription>Update your personal information</CardDescription>
+              <CardTitle>Account Settings</CardTitle>
+              <CardDescription>Manage your account preferences</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label>Full Name</Label>
-                <Input defaultValue={user?.name} />
+                <Label>Language</Label>
+                <Input defaultValue="English" />
               </div>
               <div className="space-y-2">
-                <Label>Email</Label>
-                <Input defaultValue={user?.email} disabled />
+                <Label>Time Zone</Label>
+                <Input defaultValue="Asia/Kolkata (IST)" />
               </div>
               <div className="space-y-2">
-                <Label>Phone</Label>
-                <Input defaultValue={user?.phone} />
+                <Label>Date Format</Label>
+                <Input defaultValue="DD/MM/YYYY" />
               </div>
-              <div className="space-y-2">
-                <Label>Location</Label>
-                <Input defaultValue={user?.location} />
-              </div>
-              <Button onClick={handleSave} className="bg-gradient-primary">Save Changes</Button>
+              <Button onClick={handleSave} className="bg-gradient-primary">Save Preferences</Button>
             </CardContent>
           </Card>
 
@@ -88,18 +84,33 @@ const Settings = () => {
 
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Business Background</CardTitle>
-              <CardDescription>Share your professional experience</CardDescription>
+              <CardTitle>Privacy Settings</CardTitle>
+              <CardDescription>Control your data and privacy</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label>Previous Business/Work Experience</Label>
-                <Input 
-                  placeholder="e.g., Insurance agent, Consultant, etc."
-                  defaultValue={user?.businessBackground}
-                />
+            <CardContent className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">Profile Visibility</p>
+                  <p className="text-sm text-muted-foreground">Make profile visible to other agents</p>
+                </div>
+                <Switch defaultChecked />
               </div>
-              <Button onClick={handleSave} className="bg-gradient-primary">Update Background</Button>
+              <Separator />
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">Activity Status</p>
+                  <p className="text-sm text-muted-foreground">Show when you're online</p>
+                </div>
+                <Switch defaultChecked />
+              </div>
+              <Separator />
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">Data Analytics</p>
+                  <p className="text-sm text-muted-foreground">Allow usage data collection</p>
+                </div>
+                <Switch defaultChecked />
+              </div>
             </CardContent>
           </Card>
 

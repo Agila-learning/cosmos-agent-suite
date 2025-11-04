@@ -18,10 +18,12 @@ const menuItems = [
   { icon: FileCheck, label: "KYC", path: "/kyc" },
   { icon: MessageSquare, label: "Team Chat", path: "/chat" },
   { icon: FileText, label: "Resume & Jobs", path: "/resume" },
+  { icon: Users, label: "Manage Agents", path: "/admin/agents", adminOnly: true },
 ];
 
 export const Sidebar = () => {
   const location = useLocation();
+  const { user } = useAuth();
   const { logout } = useAuth();
 
   return (
@@ -41,7 +43,7 @@ export const Sidebar = () => {
       </div>
 
       <nav className="flex-1 p-4 space-y-1">
-        {menuItems.map((item) => {
+        {menuItems.filter(item => !(item as any).adminOnly || user?.role === 'diamond').map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
           return (

@@ -1,5 +1,4 @@
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
-import { AttendanceTracker } from "@/components/attendance/AttendanceTracker";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
@@ -127,14 +126,7 @@ const AgentDashboard = () => {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <RecentActivity />
-          </div>
-          <div>
-            <AttendanceTracker />
-          </div>
-        </div>
+        <RecentActivity />
       </div>
     </DashboardLayout>
   );
