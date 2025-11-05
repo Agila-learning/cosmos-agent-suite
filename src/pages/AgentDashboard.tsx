@@ -39,58 +39,58 @@ const AgentDashboard = () => {
         </Card>
 
         {/* Agent Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="hover-scale cursor-pointer">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card className="hover-scale cursor-pointer border-l-4 border-l-primary transition-all shadow-card">
             <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-primary rounded-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Your Agents</p>
+                  <p className="text-3xl font-bold">24</p>
+                </div>
+                <div className="p-3 bg-gradient-primary rounded-lg animate-bounce-subtle">
                   <Users className="h-6 w-6 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold">24</p>
-                  <p className="text-sm text-muted-foreground">Your Agents</p>
-                </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover-scale cursor-pointer">
+          <Card className="hover-scale cursor-pointer border-l-4 border-l-green-600 transition-all shadow-card">
             <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-green-600 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">This Month</p>
+                  <p className="text-3xl font-bold">₹45K</p>
+                </div>
+                <div className="p-3 bg-green-600 rounded-lg animate-bounce-subtle" style={{ animationDelay: '0.1s' }}>
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold">₹45K</p>
-                  <p className="text-sm text-muted-foreground">This Month</p>
-                </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover-scale cursor-pointer">
+          <Card className="hover-scale cursor-pointer border-l-4 border-l-blue-600 transition-all shadow-card">
             <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-blue-600 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Goal Progress</p>
+                  <p className="text-3xl font-bold">78%</p>
+                </div>
+                <div className="p-3 bg-blue-600 rounded-lg animate-bounce-subtle" style={{ animationDelay: '0.2s' }}>
                   <Target className="h-6 w-6 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold">78%</p>
-                  <p className="text-sm text-muted-foreground">Goal Progress</p>
-                </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover-scale cursor-pointer">
+          <Card className="hover-scale cursor-pointer border-l-4 border-l-gold transition-all shadow-card">
             <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-gold rounded-lg">
-                  <Award className="h-6 w-6 text-white" />
-                </div>
+              <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-2xl font-bold">4.8</p>
-                  <p className="text-sm text-muted-foreground">Rating</p>
+                  <p className="text-sm text-muted-foreground mb-1">Rating</p>
+                  <p className="text-3xl font-bold">4.8</p>
+                </div>
+                <div className="p-3 bg-gradient-gold rounded-lg animate-bounce-subtle" style={{ animationDelay: '0.3s' }}>
+                  <Award className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>

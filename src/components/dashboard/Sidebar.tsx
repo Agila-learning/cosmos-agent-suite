@@ -7,7 +7,9 @@ import {
   MessageSquare, 
   FileText,
   Settings,
-  LogOut
+  LogOut,
+  BarChart3,
+  GraduationCap
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import forgeLogo from "@/assets/forge-logo.jpeg";
@@ -15,6 +17,8 @@ import forgeLogo from "@/assets/forge-logo.jpeg";
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
   { icon: Users, label: "Agents", path: "/agents" },
+  { icon: BarChart3, label: "Analytics", path: "/analytics" },
+  { icon: GraduationCap, label: "Training", path: "/training" },
   { icon: FileCheck, label: "KYC", path: "/kyc" },
   { icon: MessageSquare, label: "Team Chat", path: "/chat" },
   { icon: FileText, label: "Resume & Jobs", path: "/resume" },
