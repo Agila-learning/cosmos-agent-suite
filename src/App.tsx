@@ -20,7 +20,6 @@ import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import AdminAgentsManagement from "./pages/AdminAgentsManagement";
 import Analytics from "./pages/Analytics";
-import Training from "./pages/Training";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,7 +47,6 @@ const App = () => (
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/admin/agents" element={<ProtectedRoute><AdminAgentsManagement /></ProtectedRoute>} />
               <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
-              <Route path="/training" element={<ProtectedRoute><Training /></ProtectedRoute>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

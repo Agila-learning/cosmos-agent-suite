@@ -51,16 +51,16 @@ const Analytics = () => {
   return (
     <DashboardLayout>
       <div className="space-y-6 animate-fade-in">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between animate-scale-in">
           <div>
-            <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Analytics Dashboard</h1>
             <p className="text-muted-foreground">Comprehensive insights into your network performance</p>
           </div>
         </div>
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="hover-scale border-l-4 border-l-primary transition-all">
+          <Card className="hover-scale border-l-4 border-l-primary transition-all animate-fade-in">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -71,14 +71,14 @@ const Analytics = () => {
                     <span className="text-sm text-green-600 font-medium">12.5%</span>
                   </div>
                 </div>
-                <div className="p-3 bg-gradient-primary rounded-lg">
+                <div className="p-3 bg-gradient-primary rounded-lg animate-pulse">
                   <DollarSign className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-scale border-l-4 border-l-gold transition-all">
+          <Card className="hover-scale border-l-4 border-l-gold transition-all animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -89,14 +89,14 @@ const Analytics = () => {
                     <span className="text-sm text-green-600 font-medium">8.2%</span>
                   </div>
                 </div>
-                <div className="p-3 bg-gradient-gold rounded-lg">
+                <div className="p-3 bg-gradient-gold rounded-lg animate-pulse" style={{ animationDelay: '0.1s' }}>
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-scale border-l-4 border-l-accent transition-all">
+          <Card className="hover-scale border-l-4 border-l-accent transition-all animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -107,14 +107,14 @@ const Analytics = () => {
                     <span className="text-sm text-green-600 font-medium">5.1%</span>
                   </div>
                 </div>
-                <div className="p-3 bg-blue-600 rounded-lg">
+                <div className="p-3 bg-blue-600 rounded-lg animate-pulse" style={{ animationDelay: '0.2s' }}>
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-scale border-l-4 border-l-destructive transition-all">
+          <Card className="hover-scale border-l-4 border-l-destructive transition-all animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -125,7 +125,7 @@ const Analytics = () => {
                     <span className="text-sm text-red-600 font-medium">2.3%</span>
                   </div>
                 </div>
-                <div className="p-3 bg-green-600 rounded-lg">
+                <div className="p-3 bg-green-600 rounded-lg animate-pulse" style={{ animationDelay: '0.3s' }}>
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -141,7 +141,7 @@ const Analytics = () => {
           </TabsList>
 
           <TabsContent value="revenue" className="space-y-4">
-            <Card className="shadow-card">
+            <Card className="shadow-card animate-fade-in">
               <CardHeader>
                 <CardTitle>Revenue vs Target</CardTitle>
               </CardHeader>
@@ -164,7 +164,7 @@ const Analytics = () => {
           </TabsContent>
 
           <TabsContent value="performance" className="space-y-4">
-            <Card className="shadow-card">
+            <Card className="shadow-card animate-fade-in">
               <CardHeader>
                 <CardTitle>Top Agent Performance</CardTitle>
               </CardHeader>
@@ -187,7 +187,7 @@ const Analytics = () => {
           </TabsContent>
 
           <TabsContent value="distribution" className="space-y-4">
-            <Card className="shadow-card">
+            <Card className="shadow-card animate-fade-in">
               <CardHeader>
                 <CardTitle>Agent Level Distribution</CardTitle>
               </CardHeader>

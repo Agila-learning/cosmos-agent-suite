@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     <DashboardLayout>
       <div className="space-y-6 animate-fade-in">
         {/* Welcome Section */}
-        <Card className="bg-gradient-primary text-white border-0 shadow-glow overflow-hidden relative">
+        <Card className="bg-gradient-primary text-white border-0 shadow-glow overflow-hidden relative animate-scale-in">
           <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
           <CardContent className="p-8 relative z-10">
             <div className="flex items-start justify-between gap-4">

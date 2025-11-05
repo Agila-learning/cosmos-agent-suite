@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import forgeLogo from "@/assets/forge-logo.jpeg";
-import { Shield, Users, Loader2 } from "lucide-react";
+import { Shield, Users, Loader2, ArrowLeft } from "lucide-react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -52,6 +52,19 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex relative">
+      {/* Back Button */}
+      <div className="absolute top-4 left-4 z-50">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => navigate(-1)}
+          className="hover-scale"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </Button>
+      </div>
+      
+      {/* Theme Toggle */}
       <div className="absolute top-4 right-4 z-50">
         <ThemeToggle />
       </div>
