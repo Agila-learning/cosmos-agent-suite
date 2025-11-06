@@ -40,9 +40,9 @@ export const JobApplicationDetailsDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-lg md:max-w-xl lg:max-w-2xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl">{application.title}</DialogTitle>
+          <DialogTitle className="text-xl sm:text-2xl pr-8">{application.title}</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-6">

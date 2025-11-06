@@ -117,9 +117,9 @@ export const Header = () => {
                   {user?.role} Agent
                 </Badge>
               </div>
-              <Avatar>
-                <AvatarImage src="" />
-                <AvatarFallback className="bg-gradient-primary text-white">
+              <Avatar className="border-2 border-primary/20">
+                <AvatarImage src={user?.avatar || ""} />
+                <AvatarFallback className="bg-transparent border-2 border-primary text-foreground">
                   {user ? getInitials(user.name) : 'U'}
                 </AvatarFallback>
               </Avatar>

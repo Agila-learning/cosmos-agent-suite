@@ -6,7 +6,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  role: 'diamond' | 'gold' | 'silver';
+  role: 'admin' | 'diamond' | 'gold' | 'silver';
   phone: string;
   location: string;
   parentId: string | null;
@@ -14,6 +14,7 @@ export interface User {
   resumeUploaded: boolean;
   businessBackground?: string;
   attendance: Array<{ date: string; status: 'present' | 'absent' }>;
+  avatar?: string;
 }
 
 interface AuthContextType {
@@ -30,17 +31,35 @@ const mockUsers: Record<string, { password: string; user: User }> = {
   'admin@forge.com': {
     password: 'admin123',
     user: {
-      id: '1',
-      name: 'Rajesh Kumar',
+      id: '0',
+      name: 'Admin',
       email: 'admin@forge.com',
-      role: 'diamond',
+      role: 'admin',
       phone: '+91 98765 43210',
       location: 'Mumbai',
       parentId: null,
       kycStatus: 'approved',
       resumeUploaded: true,
+      businessBackground: 'System Administrator',
+      attendance: [],
+      avatar: ''
+    }
+  },
+  'diamond@forge.com': {
+    password: 'diamond123',
+    user: {
+      id: '1',
+      name: 'Rajesh Kumar',
+      email: 'diamond@forge.com',
+      role: 'diamond',
+      phone: '+91 98765 43210',
+      location: 'Mumbai',
+      parentId: '0',
+      kycStatus: 'approved',
+      resumeUploaded: true,
       businessBackground: 'Previously ran a successful consulting business',
-      attendance: []
+      attendance: [],
+      avatar: ''
     }
   },
   'gold@forge.com': {
@@ -56,7 +75,8 @@ const mockUsers: Record<string, { password: string; user: User }> = {
       kycStatus: 'approved',
       resumeUploaded: true,
       businessBackground: 'Insurance agent for 5 years',
-      attendance: []
+      attendance: [],
+      avatar: ''
     }
   },
   'silver@forge.com': {
@@ -72,7 +92,8 @@ const mockUsers: Record<string, { password: string; user: User }> = {
       kycStatus: 'pending',
       resumeUploaded: false,
       businessBackground: '',
-      attendance: []
+      attendance: [],
+      avatar: ''
     }
   }
 };

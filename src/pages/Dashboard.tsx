@@ -9,6 +9,10 @@ const Dashboard = () => {
     return <Navigate to="/login" />;
   }
 
+  if (user.role === 'admin') {
+    return <Navigate to="/admin-dashboard" />;
+  }
+
   if (user.role === 'diamond') {
     return <Navigate to="/admin-dashboard" />;
   }

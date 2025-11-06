@@ -33,7 +33,7 @@ const AdminDashboard = () => {
               <img 
                 src={forgeLogo}
                 alt="Forge India" 
-                className="h-24 w-24 object-contain rounded-lg shadow-lg hidden md:block animate-pulse-glow"
+                className="h-20 w-20 sm:h-24 sm:w-24 object-cover rounded-lg shadow-lg hidden md:block animate-pulse-glow"
               />
             </div>
           </CardContent>
