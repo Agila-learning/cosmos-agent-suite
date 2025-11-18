@@ -56,7 +56,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="h-16 border-b bg-card px-6 flex items-center justify-between">
+    <header className="h-16 border-b bg-card px-4 sm:px-6 flex items-center justify-between gap-4 sticky top-0 z-40 backdrop-blur-sm bg-card/95">
       <div className="flex-1 max-w-md relative">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />

@@ -11,32 +11,18 @@ const AgentDashboard = () => {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6 animate-fade-in">
-        {/* Welcome Section */}
-        <Card className="bg-gradient-primary text-white border-0 shadow-glow overflow-hidden relative animate-scale-in">
-          <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-          <CardContent className="p-8 relative z-10">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <h1 className="text-4xl font-bold mb-3 animate-fade-in">
-                  Welcome back, {user?.name}!
-                </h1>
-                <p className="text-white/90 text-xl mb-2 font-semibold">
-                  {user?.role.charAt(0).toUpperCase() + user?.role.slice(1)} Agent Dashboard
-                </p>
-                <p className="text-white/80 max-w-3xl leading-relaxed">
-                  Track your performance, manage your attendance, and grow your network. 
-                  Stay connected with your team and achieve your goals with Forge India Connect.
-                </p>
-              </div>
-              <img 
-                src={forgeLogo}
-                alt="Forge India" 
-                className="h-24 w-24 object-contain rounded-lg shadow-lg hidden md:block animate-pulse-glow"
-              />
-            </div>
-          </CardContent>
-        </Card>
+      <div className="space-y-6 sm:space-y-8">
+        <div className="space-y-2 animate-fade-in">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text">
+            Welcome back, {user?.name}!
+          </h1>
+          <div className="flex items-center gap-2">
+            <Badge className="bg-gradient-primary text-white border-0 text-sm">
+              {user?.role.charAt(0).toUpperCase() + user?.role.slice(1)} Agent
+            </Badge>
+            <p className="text-sm sm:text-base text-muted-foreground">Track your performance and grow your network</p>
+          </div>
+        </div>
 
         {/* Agent Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

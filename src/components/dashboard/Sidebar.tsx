@@ -42,14 +42,16 @@ export const Sidebar = () => {
     <aside className="w-64 bg-sidebar border-r border-sidebar-border flex flex-col hidden lg:flex">
       <div className="p-4 sm:p-6 border-b border-sidebar-border">
         <div className="flex items-center gap-3">
-          <img 
-            src={forgeLogo} 
-            alt="Forge India" 
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover shadow-card"
-          />
-          <div>
-            <h2 className="text-sidebar-foreground font-bold text-sm sm:text-base">FORGE INDIA</h2>
-            <p className="text-xs text-sidebar-foreground/60">Shaping Future</p>
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-md overflow-hidden bg-card flex-shrink-0">
+            <img 
+              src={forgeLogo} 
+              alt="Forge India" 
+              className="w-full h-full object-contain p-1"
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h2 className="text-sidebar-foreground font-bold text-sm sm:text-base truncate">FORGE INDIA</h2>
+            <p className="text-xs text-sidebar-foreground/60 truncate">Shaping Future</p>
           </div>
         </div>
       </div>
