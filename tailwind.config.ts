@@ -62,16 +62,33 @@ export default {
         silver: "hsl(var(--silver))",
         gold: "hsl(var(--gold))",
         diamond: "hsl(var(--diamond))",
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
+        'gradient-secondary': 'var(--gradient-secondary)',
         'gradient-gold': 'var(--gradient-gold)',
         'gradient-silver': 'var(--gradient-silver)',
         'gradient-diamond': 'var(--gradient-diamond)',
+        'gradient-success': 'var(--gradient-success)',
+        'gradient-mesh': 'var(--gradient-mesh)',
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
         'card': 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
+        'elevated': 'var(--shadow-elevated)',
       },
       borderRadius: {
         lg: "var(--radius)",
