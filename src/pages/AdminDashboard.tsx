@@ -3,50 +3,128 @@ import { StatsCards } from "@/components/dashboard/StatsCards";
 import { AgentHierarchy } from "@/components/dashboard/AgentHierarchy";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, TrendingUp, Award, Activity } from "lucide-react";
-import forgeLogo from "@/assets/forge-logo.jpeg";
+import { Button } from "@/components/ui/button";
+import { Users, BarChart3, Settings, FileText, Plus, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
+
+  const quickActions = [
+    {
+      label: "Add Agent",
+      icon: Plus,
+      description: "Onboard new agent",
+      action: () => navigate("/agents"),
+      isPrimary: true,
+    },
+    {
+      label: "View Reports",
+      icon: FileText,
+      description: "Analytics & insights",
+      action: () => navigate("/analytics"),
+      isPrimary: false,
+    },
+    {
+      label: "Analytics",
+      icon: BarChart3,
+      description: "Performance metrics",
+      action: () => navigate("/analytics"),
+      isPrimary: false,
+    },
+    {
+      label: "Settings",
+      icon: Settings,
+      description: "System configuration",
+      action: () => navigate("/settings"),
+      isPrimary: false,
+    },
+  ];
+
   return (
     <DashboardLayout>
-      <div className="space-y-6 sm:space-y-8">
-        <div className="space-y-2 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text">Admin Dashboard</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">Comprehensive overview and control of your network</p>
+      <div className="space-y-8">
+        {/* Header Section */}
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-mesh p-8 border border-border/50">
+          <div className="relative z-10 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              <TrendingUp className="h-4 w-4" />
+              <span>Admin Dashboard</span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              Welcome back, Admin
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Monitor your network, track performance, and manage your team efficiently
+            </p>
+          </div>
         </div>
 
-        <div className="animate-slide-in">
+        {/* Stats Section */}
+        <div className="animate-fade-in">
           <StatsCards />
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
-          <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          {/* Agent Hierarchy - Takes 2 columns */}
+          <div className="xl:col-span-2 animate-fade-in" style={{ animationDelay: "0.1s" }}>
             <AgentHierarchy />
           </div>
+
+          {/* Recent Activity - Takes 1 column */}
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <RecentActivity />
           </div>
         </div>
 
-        <Card className="animate-fade-in shadow-card hover-scale" style={{ animationDelay: "0.3s" }}>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Manage your network efficiently</CardDescription>
+        {/* Quick Actions Section */}
+        <Card className="animate-fade-in shadow-card hover:shadow-card-hover transition-all duration-300" style={{ animationDelay: "0.3s" }}>
+          <CardHeader className="border-b border-border/50">
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-2xl">Quick Actions</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Common tasks and shortcuts for efficient management
+                </CardDescription>
+              </div>
+            </div>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-              <button className="p-4 rounded-lg bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity text-sm font-medium">
-                Add Agent
-              </button>
-              <button className="p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors text-sm font-medium">
-                View Reports
-              </button>
-              <button className="p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors text-sm font-medium">
-                Analytics
-              </button>
-              <button className="p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors text-sm font-medium">
-                Settings
-              </button>
+          <CardContent className="pt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {quickActions.map((action, index) => {
+                const Icon = action.icon;
+                return (
+                  <Button
+                    key={index}
+                    onClick={action.action}
+                    variant={action.isPrimary ? "default" : "secondary"}
+                    className={`h-auto flex flex-col items-start gap-3 p-6 hover-scale transition-all duration-200 ${
+                      action.isPrimary
+                        ? "bg-gradient-primary text-primary-foreground shadow-glow hover:shadow-elevated"
+                        : "bg-card hover:bg-accent border border-border hover:border-primary/20"
+                    }`}
+                  >
+                    <div className={`p-3 rounded-lg ${
+                      action.isPrimary 
+                        ? "bg-white/20" 
+                        : "bg-primary/10"
+                    }`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-semibold text-base">{action.label}</div>
+                      <div className={`text-sm mt-1 ${
+                        action.isPrimary
+                          ? "text-primary-foreground/80"
+                          : "text-muted-foreground"
+                      }`}>
+                        {action.description}
+                      </div>
+                    </div>
+                  </Button>
+                );
+              })}
             </div>
           </CardContent>
         </Card>
